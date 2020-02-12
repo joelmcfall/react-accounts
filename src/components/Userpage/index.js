@@ -1,13 +1,13 @@
-import React, { Component } from "react";
+import React from "react";
 
 import { Container, Row, Col, Form } from "react-bootstrap";
 
-function Login() {
+function Userpage() {
   return (
     <Container>
       <Row>
         <Col>
-          <h1 id="title">LOGIN</h1>
+          <h1 id="title">Userpage</h1>
         </Col>
       </Row>
       <Row>
@@ -21,4 +21,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default Userpage;

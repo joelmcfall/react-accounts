@@ -1,12 +1,12 @@
 import React from "react";
-import { Container, Row, Form, Button } from "react-bootstrap";
+import { Container, Row, Col, Form, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
-function Homepage() {
+function Register() {
   return (
     <Container>
       <Row>
-        <h1 id="title">{"React Login Auth".toUpperCase()}</h1>
+        <h1 id="title">{"Register".toUpperCase()}</h1>
         <Form>
           <Form.Group controlId="formBasicEmail">
             <Form.Label>Email</Form.Label>
@@ -19,12 +19,7 @@ function Homepage() {
             <Form.Control type="password" placeholder="enter password..." />
           </Form.Group>
         </Form>
-
-        <Button as={Link} to="/user">
-          Sign In
-        </Button>
-
-        <Button as={Link} to="/register">
+        <Button as={Link} to="/">
           Register
         </Button>
       </Row>
@@ -32,4 +27,4 @@ function Homepage() {
   );
 }
 
-export default Homepage;
+export default Register;

@@ -2,8 +2,45 @@
   font-family: "Muli", sans-serif;
 }
 
-#title {
+.container {
   text-align: center;
+  padding-top: 15px;
+}
+
+.row {
+  width: 400px;
+  display: inline-block !important;
+  padding: 15px;
+  margin: 15px !important;
+  box-shadow: 5px 5px 10px lightgrey;
+  border-radius: 15px;
+  background-color: white;
+}
+
+@media only screen and (max-width: 1024px) {
+  .row {
+    width: 100%;
+    margin: 0px !important;
+  }
+}
+
+#title {
   padding-top: 20px;
+  color: #007bff;
   padding-bottom: 20px;
+}
+
+.form-label {
+  display: block;
+  text-align: left;
+}
+
+.btn {
+  margin: 5px;
+  border-radius: 15px !important;
+}
+
+.btn:hover {
+  color: #007bff !important;
+  background-color: white !important;
 }

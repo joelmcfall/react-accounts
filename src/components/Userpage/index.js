@@ -1,24 +1,29 @@
-import React from "react";
+import React, { Component } from "react";
 
 import { Container, Row, Col, Form } from "react-bootstrap";
+import fireb from "../auth/firebase";
 
-function Userpage() {
-  return (
-    <Container>
-      <Row>
-        <Col>
-          <h1 id="title">Userpage</h1>
-        </Col>
-      </Row>
-      <Row>
-        <Form>
-          <Form.Group>
-            <Form.Label></Form.Label>
-          </Form.Group>
-        </Form>
-      </Row>
-    </Container>
-  );
+class Userpage extends Component {
+  handleLogout() {
+    fireb.auth().signOut();
+  }
+  render() {
+    return (
+      <Container>
+        <Row>
+          <Col>
+            <h1 id="title">Userpage</h1>
+            <p>welcome to your Userpage</p>
+          </Col>
+        </Row>
+        <Row>
+          <button className="j-btn" onClick={this.handleLogout}>
+            Logout
+          </button>
+        </Row>
+      </Container>
+    );
+  }
 }
 
 export default Userpage;

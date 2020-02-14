@@ -41,7 +41,7 @@ class Homepage extends Component {
   render() {
     return (
       <Container>
-        <Row>
+        <Row className="row-login">
           <h1 id="title">{"React Login Auth".toUpperCase()}</h1>
           <Form>
             <Form.Group controlId="formBasicEmail">
@@ -53,8 +53,7 @@ class Homepage extends Component {
                 placeholder="enter email..."
               />
             </Form.Group>
-          </Form>
-          <Form>
+
             <Form.Group controlId="formBasicPassword">
               <Form.Label>Password</Form.Label>
               <Form.Control

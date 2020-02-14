@@ -7,7 +7,7 @@
   padding-top: 15px;
 }
 
-.row {
+.row-login {
   width: 400px;
   display: inline-block !important;
   padding: 15px;
@@ -18,7 +18,7 @@
 }
 
 @media only screen and (max-width: 1024px) {
-  .row {
+  .row-login {
     width: 100%;
     margin: 0px !important;
   }
@@ -35,26 +35,23 @@
   text-align: left;
 }
 
+.user-title {
+  margin-right: -40px !important;
+}
+
+.user-btns {
+  text-align: left;
+  margin-left: 30px;
+}
+
+.logout-btn {
+  border-radius: 30px !important;
+}
+
 .btn {
   margin: 5px;
-  border-radius: 15px !important;
+  border-radius: 30px;
 }
-
-.j-btn {
-  width: 70px;
-  height: 100%;
-  background-color: #007bff;
-  border-radius: 15px;
-  border-width: 1px;
-  border-color: #007bff;
-  color: white;
-}
-
-.j-btn:hover {
-  color: #007bff;
-  background-color: white;
-}
-
 .btn:hover {
   color: #007bff !important;
   background-color: white !important;

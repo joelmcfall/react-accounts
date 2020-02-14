@@ -47,7 +47,7 @@ class Register extends Component {
   render() {
     return (
       <Container>
-        <Row>
+        <Row className="row-login">
           <h1 id="title">{"Register".toUpperCase()}</h1>
           <Form>
             <Form.Group controlId="formBasicText">

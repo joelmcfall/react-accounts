@@ -7,7 +7,8 @@ import { createItem } from "../../store/Actions/listActions";
 class AddItem extends Component {
   state = {
     name: "",
-    quantity: ""
+    quantity: "",
+    notes: ""
   };
 
   handleName = e => {
@@ -16,6 +17,10 @@ class AddItem extends Component {
 
   handleQuantity = e => {
     this.setState({ quantity: e.target.value });
+  };
+
+  handleNotes = e => {
+    this.setState({ notes: e.target.value });
   };
 
   handleSumbit = e => {
@@ -45,6 +50,15 @@ class AddItem extends Component {
                 onChange={this.handleQuantity}
                 type="text"
                 placeholder="Enter quantity"
+              />
+            </Form.Group>
+            <Form.Group controlId="formBasicNote">
+              <Form.Label>Note</Form.Label>
+              <Form.Control
+                value={this.state.notes}
+                onChange={this.handleNotes}
+                type="text"
+                placeholder="Enter note"
               />
             </Form.Group>
             <Button type="submit">Add</Button>

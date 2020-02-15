@@ -9,9 +9,13 @@ const listRed = (state = initState, action) => {
   switch (action.type) {
     case "ADD_ITEM":
       console.log("Created Item:", action.item);
-      break;
+      return state;
+    case "ADD_ITEM_ERR":
+      console.log("Create Item Error: ", action.err);
+      return state;
+    default:
+      return state;
   }
-  return state;
 };
 
 export default listRed;

@@ -30,6 +30,11 @@
   padding-bottom: 20px;
 }
 
+.err-text {
+  padding-top: 20px;
+  color: rgb(255, 61, 61) !important;
+}
+
 .form-label {
   display: block;
   text-align: left;

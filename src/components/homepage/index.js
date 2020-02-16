@@ -1,8 +1,10 @@
 import React, { Component } from "react";
 import fireb from "../auth/firebase";
 
-import { Container, Row, Form, Button } from "react-bootstrap";
+import { Container, Row, Form, Button, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+import { signIn } from "../../store/Actions/authActions";
 
 class Homepage extends Component {
   constructor(props) {
@@ -10,7 +12,7 @@ class Homepage extends Component {
 
     this.state = {
       email: "",
-      password: ""
+      pass: ""
     };
 
     this.login = this.login.bind(this);
@@ -21,24 +23,14 @@ class Homepage extends Component {
   };
 
   handlePassword = e => {
-    this.setState({ password: e.target.value });
+    this.setState({ pass: e.target.value });
   };
 
   login() {
-    const email = this.state.email;
-    const pass = this.state.password;
-
-    fireb
-      .auth()
-      .signInWithEmailAndPassword(email, pass)
-      .then(u => {
-        console.log("Great success");
-      })
-      .catch(err => {
-        console.log(err.toString());
-      });
+    this.props.signIn(this.state);
   }
   render() {
+    const { authErr } = this.props;
     return (
       <Container>
         <Row className="row-login">
@@ -70,10 +62,29 @@ class Homepage extends Component {
           <Button as={Link} to="/register">
             Register
           </Button>
+
+          {authErr ? (
+            <Col>
+              <h4 className="err-text"> {authErr} </h4>
+            </Col>
+          ) : null}
         </Row>
       </Container>
     );
   }
 }
 
-export default Homepage;
+const mapStateToProps = state => {
+  console.log(state.auth.authErr);
+  return {
+    authErr: state.auth.authErr
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    signIn: details => dispatch(signIn(details))
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Homepage);

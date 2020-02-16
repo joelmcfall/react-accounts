@@ -4,6 +4,9 @@ import { Container, Row, Col, Button, Modal } from "react-bootstrap";
 import fireb from "../auth/firebase";
 
 import { connect } from "react-redux";
+import { firestoreConnect } from "react-redux-firebase";
+import { compose } from "redux";
+
 import ShopList from "./shopList";
 import AddItem from "./addItem";
 
@@ -58,9 +61,13 @@ class Userpage extends Component {
 }
 
 const mapStateToProps = state => {
+  console.log(state);
   return {
-    shopList: state.list.shopList
+    shopList: state.firestore.ordered.Items
   };
 };
 
-export default connect(mapStateToProps)(Userpage);
+export default compose(
+  connect(mapStateToProps),
+  firestoreConnect([{ collection: "Items" }])
+)(Userpage);

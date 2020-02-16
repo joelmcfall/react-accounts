@@ -2,13 +2,14 @@ import authRed from "./authRed";
 import listRed from "./listRed";
 
 import { combineReducers } from "redux";
-import { FirebaseReducer, FirestoreReducer } from "react-redux-firebase";
+import { firebaseReducer } from "react-redux-firebase";
+import { firestoreReducer } from "redux-firestore";
 
 const rootReducer = combineReducers({
   auth: authRed,
   list: listRed,
-  firebase: FirebaseReducer,
-  firestore: FirestoreReducer
+  firestore: firestoreReducer,
+  firebase: firebaseReducer
 });
 
 export default rootReducer;

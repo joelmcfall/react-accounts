@@ -4,6 +4,9 @@ import fireb from "../auth/firebase";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
+import { connect } from "react-redux";
+import { register } from "../../store/Actions/authActions";
+
 class Register extends Component {
   constructor(props) {
     super(props);
@@ -30,18 +33,7 @@ class Register extends Component {
   };
 
   Register() {
-    const email = this.state.email;
-    const pass = this.state.password;
-
-    fireb
-      .auth()
-      .createUserWithEmailAndPassword(email, pass)
-      .then(u => {
-        console.log("Great sign in");
-      })
-      .catch(err => {
-        console.log(err.toString());
-      });
+    this.props.register(this.state);
   }
 
   render() {
@@ -82,13 +74,23 @@ class Register extends Component {
               />
             </Form.Group>
           </Form>
-          <Button onClick={this.Register} as={Link} to="/">
-            Register
-          </Button>
+          <Button onClick={this.Register}>Register</Button>
         </Row>
       </Container>
     );
   }
 }
 
-export default Register;
+const mapPropsToDispatch = dispatch => {
+  return {
+    register: details => dispatch(register(details))
+  };
+};
+
+const mapStateToProps = state => {
+  return {
+    authErr: state.auth.authErr
+  };
+};
+
+export default connect(mapStateToProps, mapPropsToDispatch)(Register);

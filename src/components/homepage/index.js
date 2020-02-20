@@ -29,6 +29,7 @@ class Homepage extends Component {
   login() {
     this.props.signIn(this.state);
   }
+
   render() {
     const { authErr } = this.props;
     return (
@@ -75,7 +76,7 @@ class Homepage extends Component {
 }
 
 const mapStateToProps = state => {
-  console.log(state.auth.authErr);
+  console.log("auth Err" + state.auth.authErr);
   return {
     authErr: state.auth.authErr
   };

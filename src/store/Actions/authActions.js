@@ -16,14 +16,35 @@ export const signIn = details => {
   };
 };
 
-export const register = details => {
+export const signOut = () => {
   return (dispatch, getState, { getFirebase }) => {
     const firebase = getFirebase();
 
     firebase
       .auth()
+      .signOut()
+      .then(() => {
+        dispatch({ type: "SIGNOUT_SUCCESS" });
+      });
+  };
+};
+
+export const register = details => {
+  return (dispatch, getState, { getFirebase, getFirestore }) => {
+    const firebase = getFirebase();
+
+    firebase
+      .auth()
       .createUserWithEmailAndPassword(details.email, details.password)
-      .then(u => {
+      .then(resp => {
+        return firestore
+          .collection("Users")
+          .doc(resp.user.uid)
+          .set({
+            name: details.name
+          });
+      })
+      .then(() => {
         dispatch({ type: "REGISTER_SUCCESS" });
         console.log("Great sign in");
       })

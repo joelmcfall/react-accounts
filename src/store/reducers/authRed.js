@@ -26,6 +26,9 @@ const authRed = (state = initState, action) => {
         ...state,
         authErr: action.err.message
       };
+    case "SIGNOUT_SUCCESS":
+      console.log("SIGNOUEDEOUDOEUDEU");
+      return state;
 
     default:
       return state;

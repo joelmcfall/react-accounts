@@ -6,17 +6,25 @@ import fireb from "../auth/firebase";
 import { connect } from "react-redux";
 import { firestoreConnect } from "react-redux-firebase";
 import { compose } from "redux";
+import { signOut } from "../../store/Actions/authActions";
 
 import ShopList from "./shopList";
 import AddItem from "./addItem";
 
 class Userpage extends Component {
-  state = {
-    showing: false
-  };
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      showing: false
+    };
+
+    this.handleLogout = this.handleLogout.bind(this);
+  }
 
   handleLogout() {
-    fireb.auth().signOut();
+    console.log(this.props);
+    this.props.signOut();
   }
 
   handleAdd = () => this.setState({ showing: true });
@@ -24,6 +32,7 @@ class Userpage extends Component {
 
   render() {
     const { shopList } = this.props;
+    console.log(this.props);
 
     return (
       <Container>
@@ -67,7 +76,13 @@ const mapStateToProps = state => {
   };
 };
 
+const mapDispatchToProps = dispatch => {
+  return {
+    signOut: () => dispatch(signOut())
+  };
+};
+
 export default compose(
-  connect(mapStateToProps),
+  connect(mapStateToProps, mapDispatchToProps),
   firestoreConnect([{ collection: "Items" }])
 )(Userpage);

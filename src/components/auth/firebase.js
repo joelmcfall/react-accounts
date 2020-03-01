@@ -9,9 +9,12 @@ var firebaseConfig = {
   storageBucket: "react-auth-281ad.appspot.com",
   messagingSenderId: "3045537146",
   appId: "1:3045537146:web:4229449f81a0a9352092c3",
-  measurementId: "G-H5XXME0R17"
+  measurementId: "G-H5XXME0R17",
+  userProfile: "Users",
+  useFirestoreForProfile: true
 };
 
 const fireb = firebase.initializeApp(firebaseConfig);
+firebase.firestore();
 
 export default fireb;

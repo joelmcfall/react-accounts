@@ -32,6 +32,7 @@ export const signOut = () => {
 export const register = details => {
   return (dispatch, getState, { getFirebase, getFirestore }) => {
     const firebase = getFirebase();
+    const firestore = getFirestore();
 
     firebase
       .auth()

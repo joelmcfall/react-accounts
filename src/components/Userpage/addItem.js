@@ -48,7 +48,7 @@ class AddItem extends Component {
               <Form.Control
                 value={this.state.quantity}
                 onChange={this.handleQuantity}
-                type="text"
+                type="number"
                 placeholder="Enter quantity"
               />
             </Form.Group>
